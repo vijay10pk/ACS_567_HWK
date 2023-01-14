@@ -1,0 +1,25 @@
+﻿c.1) What are benefits to use Scrum?
+- Delighted customers.
+- Improved return on investment.
+- Reduced costs.
+- Fast Results.
+- Confidence to succeed in a complex world.
+- Less risk.
+- Emphasis on creativity and innovation.
+
+
+c.2) According to Cynefin framework, what are five problem domains? Which
+problem domain(s) is Scrum particularly well suited for?
+
+    The Cynefin framework categorizes problem domain into four types:
+        - Simple
+        - Complicated
+        - Complex
+        - Chaotic
+
+    Scrum is well suited for complex problem domains. Scrum is an agile
+methodology that emphasises on flexibility, collaboration, and continuous
+improvement. It encourrages the team to learn through a seriec of sprints and
+to adjust their approach as needed. This method works well for complex problems
+in which the relationships between causes and effects are unclear and solutions
+emerge through experimentation and learning.
