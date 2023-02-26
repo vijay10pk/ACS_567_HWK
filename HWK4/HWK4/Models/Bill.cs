@@ -3,6 +3,10 @@ namespace HWK4.Models
 {
     public class Bill
     {
+        public Bill()
+        {
+        }
+
         /// <summary>
         /// Constructor for bill object
         /// </summary>

@@ -24,11 +24,21 @@ namespace HWK4.Repository
             return _context.Bill.ToList();
         }
 
+        /// <summary>
+        /// Method to Get the Bill for the given bill ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>bill data of the given id</returns>
         public Bill GetExpenseById(int id)
         {
             return _context.Bill.Where(bill => bill.Id == id).FirstOrDefault();
         }
 
+        /// <summary>
+        /// Method for checking whether the bill data exist for the given id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool BillExists(int id)
         {
             return _context.Bill.Any(bill => bill.Id == id);
@@ -41,6 +51,7 @@ namespace HWK4.Repository
         /// <returns>true if new data has been created or false if new data is not created</returns>
         public bool AddExpense(Bill bill)
         {
+            bill.Date = DateTime.UtcNow;
             _context.Add(bill);
             return Save();
         }
@@ -53,6 +64,7 @@ namespace HWK4.Repository
         /// <returns>true if new data has been updated or false if new data is not updated</returns>
         public bool EditExpense(Bill updateBill)
         {
+            updateBill.Date = DateTime.UtcNow;
             _context.Update(updateBill);
             return Save();
         }
@@ -71,21 +83,25 @@ namespace HWK4.Repository
         /// <summary>
         /// Method that handle simple data analysis.
         /// </summary>
-        public void Analysis()
+        public Dictionary<string, dynamic> Analysis()
         {
-            var totalBills = _context.Bill.Count();
-            var totalAmount = _context.Bill.Sum(b => b.Amount);
-            var averageAmount = _context.Bill.Average(b => b.Amount);
-            var minAmount = _context.Bill.Min(b => b.Amount);
-            var maxAmount = _context.Bill.Max(b => b.Amount);
+            var billAnalysis = new Dictionary<string, dynamic>();
+            List<double> allBills = _context.Bill.ToList()
+                    .Select(a => a.Amount)
+                    .ToList();
+            billAnalysis.Add("totalBills", allBills.Count());
+            billAnalysis.Add("totalAmount", allBills.Sum());
+            billAnalysis.Add("averageAmount", allBills.Average());
+            billAnalysis.Add("minimumAmount", allBills.Min());
+            billAnalysis.Add("maximumAmount", allBills.Max());
 
-            Console.WriteLine("Total Number of Bills: " + totalBills);
-            Console.WriteLine("Total Amount: " + totalAmount);
-            Console.WriteLine("Average Bill Amount: " + averageAmount);
-            Console.WriteLine("Minimum Bill Amount: " + minAmount);
-            Console.WriteLine("Maximum Bill Amount: " + maxAmount);
+            return billAnalysis;
         }
 
+        /// <summary>
+        /// Save the changes to the database
+        /// </summary>
+        /// <returns></returns>
         public bool Save()
         {
             int saved = _context.SaveChanges();

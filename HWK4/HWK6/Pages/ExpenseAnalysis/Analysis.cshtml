@@ -1,0 +1,41 @@
+﻿@*Razor page for Displaying the simple data analysis of bill data*@
+@page
+@model HWK6.Pages.ExpenseAnalysis.AnalysisModel
+@{
+}
+
+<br>
+<h2>Bill Analysis</h2>
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th></th>
+            <th>Value</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Total No. of Bills</td>
+            <td>@Model.billAnalysis.totalBills</td>
+        </tr>
+        <tr>
+            <td>Total bill amount</td>
+            <td>@Model.billAnalysis.totalAmount</td>
+        </tr>
+        <tr>
+            <td>Average bill amount</td>
+            <td>@Model.billAnalysis.averageAmount</td>
+        </tr>
+        <tr>
+            <td>Minimum bill amount</td>
+            <td>@Model.billAnalysis.minimumAmount</td>
+        </tr>
+        <tr>
+            <td>Maximum bill amount</td>
+            <td>@Model.billAnalysis.maximumAmount</td>
+        </tr>
+    </tbody>
+</table>

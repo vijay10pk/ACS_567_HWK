@@ -1,0 +1,32 @@
+﻿@*Razor page for delete a particular bill data*@
+@page
+@model HWK6.Pages.ExpenseAnalysis.DeleteModel
+@{
+}
+<br>
+<h2>Delete Bill</h2>
+
+@if (@Model.errorMessage.Length > 0)
+{
+    <div>@Model.errorMessage</div>
+}
+
+<form method="POST">
+    <input type="hidden" name="id" value="@Model.bill.Id" />
+    <table>
+        <tr>
+            <td>Amount: </td>
+            <td>@Model.bill.Amount</td>
+        </tr>
+        <tr>
+            <td>Category: </td>
+            <td>@Model.bill.Category</td>
+        </tr>
+    </table>
+    <p></p>
+    <input type="submit" value="Delete" class="btn btn-primary" />
+</form>
+@if (@Model.successMessage.Length > 0)
+{
+    <h1>@Model.successMessage</h1>
+}
