@@ -141,23 +141,11 @@ namespace HWK4.Controllers
         /// <returns>Result of data analyis</returns>
         [HttpGet]
         [Route("/expense/analysis")]
+        [ProducesResponseType(200, Type = typeof(Dictionary<string, dynamic>))]
         public IActionResult GetExpenseAnalysis()
         {
-            var expenses = _expenseAnalysisRepository.GetExpenses();
-            var totalBills = expenses.Count;
-            var totalAmount = expenses.Sum(e => e.Amount);
-            var averageBillAmount = totalAmount / totalBills;
-            var minimumBillAmount = expenses.Min(e => e.Amount);
-            var maximumBillAmount = expenses.Max(e => e.Amount);
-            var analysis = new
-            {
-                totalBills,
-                totalAmount,
-                averageBillAmount,
-                minimumBillAmount,
-                maximumBillAmount
-            };
-            return Ok(analysis);
+            
+            return Ok(_expenseAnalysisRepository.Analysis());
         }
 
     }

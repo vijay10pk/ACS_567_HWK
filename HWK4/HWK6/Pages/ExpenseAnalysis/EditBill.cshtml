@@ -1,0 +1,35 @@
+﻿@*Razon page for editing the bill data*@
+@page
+@model HWK6.Pages.ExpenseAnalysis.EditBillModel
+@{
+}
+<br>
+<h2>Edit Bill</h2>
+
+@if (@Model.errorMessage.Length > 0)
+{
+    <div>@Model.errorMessage</div>
+}
+
+<form method="POST">
+    <input type="hidden" name="id" value="@Model.bill.Id" />
+    <table>
+        <tr>
+            <td>Amount</td>
+            <td><input type="text" name="amount" value="@Model.bill.Amount"></td>
+        </tr>
+        <tr>
+            <td>Category</td>
+            <td><input type="text" name="category" value="@Model.bill.Category"></td>
+        </tr>
+    </table>
+    <p></p>
+    
+    <input type="submit" value="Edit" class="btn btn-primary" />
+</form>
+<div>
+    @if (@Model.successMessage.Length > 0)
+    {
+        <div>@Model.successMessage</div>
+    }
+</div>

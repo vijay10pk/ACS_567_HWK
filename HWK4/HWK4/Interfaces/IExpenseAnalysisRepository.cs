@@ -14,7 +14,7 @@ namespace HWK4.Interfaces
 		bool AddExpense(Bill bill);
 		bool EditExpense( Bill updateBill);
 		bool DeleteExpense(int id);
-		void Analysis();
+        Dictionary<string, dynamic> Analysis();
 
     }
 }
